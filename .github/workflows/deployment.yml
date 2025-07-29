@@ -10,20 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - run: corepack enable
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: "20"
       # Pick your own package manager and build script
-      - run: bun install
-      - run: bun run generate
-      - name: List output directory
-        run: ls -la .output/
-      - name: List public directory  
-        run: ls -la .output/public/
+      - run: npm install
+      - run: NUXT_APP_BASE_URL=/homemassagedanang/ npx nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ github.workspace }}/.output/public
+          path: ./.output/public
   # Deployment job
   deploy:
     # Add a dependency to the build job
