@@ -21,7 +21,7 @@
               height="100%"
             >
               <v-card-title
-                :class="['text-center mt-15 text-secondary text-wrap', mdAndDown ? 'text-h4' : 'text-h2']"
+                :class="['text-center mt-15 text-primary text-wrap', mdAndDown ? 'text-h4' : 'text-h2']"
               >
                 Dịch vụ massage tại nhà <br/>Đà Nẵng
               </v-card-title>
@@ -139,10 +139,10 @@ const banners = [
     src: 'banner-4.png',
   },
   {
-    src: 'banner-5.png',
+    src: 'banner-6.png',
   },
   {
-    src: 'banner-6.png',
+    src: 'banner-7.png',
   },
 ];
 
