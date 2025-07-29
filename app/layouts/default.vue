@@ -1,4 +1,5 @@
 <template>
+  <!-- App bar -->
   <v-app-bar class="bg-white elevation-0" app>
     <v-container max-width="1200" class="mx-auto">
       <v-row>
@@ -88,9 +89,12 @@
       </v-row>
     </v-container>
   </v-app-bar>
+
+  <!-- Navigation drawer -->
   <v-navigation-drawer
     v-model="drawer.visible"
     app
+    temporary
   >
     <v-list>
       <v-list-item
@@ -102,11 +106,92 @@
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
+
+  <!-- Main content -->
   <v-main>
-    <v-container max-width="1200" class="mx-auto" min-height="100vh">
+    <v-container fluid class="pa-0">
       <slot />
     </v-container>
   </v-main>
+
+  <!-- Footer -->
+  <v-footer
+    class="bg-white text-center"
+    padless
+  >
+    <v-container max-width="1200" class="mx-auto">
+      <v-row no-gutters>
+        <v-col
+          cols="12" sm="12" md="4"
+        >
+          <v-card class="bg-transparent elevation-0 d-flex flex-column align-center">
+            <v-responsive :aspect-ratio="5/1">
+              <v-img
+                :src="getImagePath('home-massage-text.png')"
+                alt="Home Massage Da Nang Logo"
+                cover
+                width="300"
+              ></v-img>
+            </v-responsive>
+            <v-card-text>
+              <p class="text-body-2">Chuyên cung cấp massage tại nhà Đà Nẵng.</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        
+        <v-col
+          cols="12" sm="6" md="4"
+        >
+          <v-card class="bg-transparent elevation-0">
+            <v-card-title>
+              <span class="text-subtitle-1 font-weight-bold">
+                <v-icon>mdi-phone</v-icon>
+                Mobilephone:
+              </span>
+            </v-card-title>
+            <v-card-text>
+              <p class="text-h6 text-primary font-weight-bold cursor-pointer">+84935922854</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+
+        <v-col
+          cols="12" sm="6" md="4"
+        >
+          <v-card class="bg-transparent elevation-0">
+            <v-card-title>
+              <span class="text-subtitle-1 font-weight-bold">
+                Contact us:
+              </span>
+            </v-card-title>
+            <v-card-text>
+              <v-btn
+                icon
+                variant="text"
+                size="50"
+                color="blue"
+                v-for="contact in contacts"
+                :key="contact.title"
+                :href="contact.link"
+                target="_blank"
+              >
+                <v-img
+                  :src="getImagePath(contact.icon)"
+                  width="40"
+                  height="40"
+                  cover
+                  rounded="circle"
+                />
+              </v-btn>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12">
+          <p class="text-body-2">© {{ new Date().getFullYear() }} Home Massage Da Nang. All rights reserved.</p>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-footer>
 </template>
 <script setup lang="ts">
 const drawer = reactive({
@@ -120,6 +205,29 @@ const selectedLanguage = reactive({
   code: 'vi',
   icon: 'vn.png',
 });
+
+const contacts = [
+  {
+    title: 'Zalo',
+    icon: 'zalo.svg',
+    link: 'https://zalo.me/0935922854',
+  },
+  {
+    title: 'Facebook',
+    icon: 'facebook.svg',
+    link: 'https://www.messenger.com/t/100009511365248',
+  },
+  {
+    title: 'Whatsapp',
+    icon: 'whatsapp.svg',
+    link: 'https://wa.me/qr/XETIG4TOJI5QO1',
+  },
+  {
+    title: 'KakaoTalk',
+    icon: 'kakaoTalk.svg',
+    link: 'http://qr.kakao.com/talk/0diNs_cW8DuEbDIrdyHsbGQsh5Q-',
+  },
+];
 
 const menu = [
   {
