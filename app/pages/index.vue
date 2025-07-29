@@ -17,19 +17,28 @@
             cover
           >
             <v-card
-              :image="getImagePath(banner.src)"
+              class="bg-transparent"
               height="100%"
+              tile
             >
-              <v-card-title
-                :class="['text-center mt-15 text-primary text-wrap', mdAndDown ? 'text-h4' : 'text-h2']"
+              <v-img
+                :src="getImagePath(banner.src)"
+                :lazy-src="getImagePath('tiny-banner.png')"
+                transition="fade-transition"
+                height="400"
+                cover
               >
-                Dịch vụ massage tại nhà <br/>Đà Nẵng
-              </v-card-title>
-              <v-card-text
-                :class="['text-center text-white mt-5', mdAndDown ? 'text-h6' : 'text-h4']"
-              >
-                <p>Chúng tôi cung cấp dịch vụ massage tại nhà chuyên nghiệp tại Đà Nẵng, <br/>mang lại sự thư giãn tối ưu cho bạn.</p>
-              </v-card-text>
+                <v-card-title
+                  :class="['text-center mt-15 text-primary text-wrap', mdAndDown ? 'text-h4' : 'text-h2']"
+                >
+                  Dịch vụ massage tại nhà <br/>Đà Nẵng
+                </v-card-title>
+                <v-card-text
+                  :class="['text-center text-white mt-5', mdAndDown ? 'text-h6' : 'text-h4']"
+                >
+                  <p>Chúng tôi cung cấp dịch vụ massage tại nhà chuyên nghiệp tại Đà Nẵng, <br/>mang lại sự thư giãn tối ưu cho bạn.</p>
+                </v-card-text>
+              </v-img>
             </v-card>
           </v-carousel-item>
         </v-carousel>
