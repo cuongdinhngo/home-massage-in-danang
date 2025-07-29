@@ -19,7 +19,7 @@ export default defineVuetifyConfiguration({
           highlight: '#319795',
           background: '#171410',
           container: '#BBB3AF',
-          main: '#1E1E1E',
+          main: '#494949ff',
           surface: '#F5F5F5',
           faceoff: '#BB86FC',
           badge: '#1976D2',
