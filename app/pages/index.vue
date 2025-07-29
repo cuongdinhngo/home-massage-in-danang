@@ -39,7 +39,7 @@
 
   <!-- Features -->
   <v-container max-width="1200" class="mx-auto mt-10 rounded-lg">
-    <h2 class="text-center text-secondary">Find your perfect escape</h2>
+    <h2 class="text-center text-secondary" id="features">Find your perfect escape</h2>
     <v-container max-width="1000" class="mx-auto rounded-lg">
       <v-row no-gutters>
         <v-col
@@ -54,7 +54,7 @@
   </v-container>
 
   <!-- Services -->
-  <v-container max-width="1200" class="mx-auto rounded-lg">
+  <v-container id="services" max-width="1200" class="mx-auto rounded-lg">
     <v-card-title
       :class="['text-center text-h5 font-weight-bold', $vuetify.display.smAndDown ? 'pa-5' : 'pt-10 pb-15']"
       style="border: 2px solid #B1873F; border-radius: 15px;"
@@ -98,6 +98,7 @@
 
   <!-- Testaments -->
   <v-container
+    id="testimonials"
     max-width="1200"
     class="mx-auto mt-5 rounded-lg"
   >

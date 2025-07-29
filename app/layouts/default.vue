@@ -28,6 +28,7 @@
               :key="index"
               active-color="primary"
               class="text-subtitle-1 font-weight-bold"
+              @click="scrollToSection(item.section)"
             >
               {{item.title}}
             </v-btn>
@@ -101,6 +102,7 @@
         v-for="(item, index) in menu"
         :key="index"
         link
+        @click="scrollToSection(item.section)"
       >
         <v-list-item-title>{{ item.title }}</v-list-item-title>
       </v-list-item>
@@ -230,15 +232,9 @@ const contacts = [
 ];
 
 const menu = [
-  {
-    title: 'Features',
-  },
-  {
-    title: 'Services',
-  },
-  {
-    title: 'Testimonial',
-  },
+  { title: 'Features', section: 'features' },
+  { title: 'Services', section: 'services' },
+  { title: 'Testimonial', section: 'testimonials' },
 ];
 
 const languages = [
@@ -263,4 +259,13 @@ const languages = [
     icon: 'cn.png',
   },
 ];
+
+function scrollToSection(section: string) {
+  const el = document.getElementById(section);
+  if (el) {
+    const yOffset = -80;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
 </script>
