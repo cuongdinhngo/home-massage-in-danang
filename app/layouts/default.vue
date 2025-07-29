@@ -72,7 +72,7 @@
                 :key="index"
                 :value="language.code"
                 link
-                @click="selectedLanguage = language"
+                @click="chooseLanguage(language)"
                 :class="[{'bg-container': selectedLanguage.code === language.code}]"
               >
                 <template #prepend>
@@ -267,5 +267,12 @@ function scrollToSection(section: string) {
     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
+}
+
+function chooseLanguage(language: { title: string; code: string; icon: string }) {
+  selectedLanguage.title = language.title;
+  selectedLanguage.code = language.code;
+  selectedLanguage.icon = language.icon;
+  console.log('Language changed to => ', selectedLanguage);
 }
 </script>
