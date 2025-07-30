@@ -15,6 +15,8 @@
   "service-header": "Dịch vụ của chúng tôi",
   "testimonial-header": "Lời chứng thực",
   "testimonial-subtitle": "Khách hàng của chúng tôi nói gì về dịch vụ của chúng tôi",
+  "error-title": "Trang này không tồn tại, nhưng một buổi massage thư giãn thì luôn có sẵn!",
+  "error-subtitle": "Hãy đặt lịch ngay!",
   "$vuetify": {
     "rating": {
       "ariaLabel": {

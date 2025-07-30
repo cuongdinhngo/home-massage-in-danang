@@ -15,6 +15,8 @@
   "service-header": "Our Services",
   "testimonial-header": "Testimonials",
   "testimonial-subtitle": "What our customers say about our service",
+  "error-title": "This page doesn't exist, but a relaxing massage is always available!",
+  "error-subtitle": "Book your session now!",
   "$vuetify": {
     "rating": {
       "ariaLabel": {

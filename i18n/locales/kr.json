@@ -15,6 +15,8 @@
   "service-header": "저희 서비스",
   "testimonial-header": "고객 후기",
   "testimonial-subtitle": "저희 서비스에 대한 고객님의 소중한 의견",
+  "error-title": "이 페이지는 존재하지 않지만, 편안한 마사지는 언제나 가능합니다!",
+  "error-subtitle": "지금 예약하세요!",
   "$vuetify": {
     "rating": {
       "ariaLabel": {
