@@ -60,6 +60,7 @@
         >
           <v-img
             :src="getImagePath(feature.image)"
+            :lazy-src="getImagePath(`tiny-${feature.image}`)"
             cover rounded="lg"
             class="feature-image"
           />

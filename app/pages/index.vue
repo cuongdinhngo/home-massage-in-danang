@@ -23,7 +23,7 @@
             >
               <v-img
                 :src="getImagePath(banner.src)"
-                :lazy-src="getImagePath('tiny-banner.png')"
+                :lazy-src="getImagePath(`tiny-${banner.src}`)"
                 transition="fade-transition"
                 height="400"
                 cover
