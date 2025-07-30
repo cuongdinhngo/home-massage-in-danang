@@ -29,7 +29,7 @@
                 cover
               >
                 <v-card-title
-                  :class="['text-center mt-15 text-primary text-wrap', mdAndDown ? 'text-h4' : 'text-h2']"
+                  :class="['text-center mt-15 text-amber-darken-1 text-wrap', mdAndDown ? 'text-h4' : 'text-h2']"
                 >
                   {{ $t('hero-title') }}
                 </v-card-title>
@@ -48,7 +48,14 @@
 
   <!-- Features -->
   <v-container max-width="1200" class="mx-auto mt-10 rounded-lg">
-    <h2 class="text-center text-secondary" id="features">{{ $t('feature-header') }}</h2>
+    <!-- Features Header -->
+    <v-card-title class="text-secondary d-flex align-center justify-center" id="features">
+      <div style="width: 40px; height: 40px; margin-right: 10px;">
+        <v-img :src="getImagePath('spa.svg')" cover />
+      </div>
+      <span class="text-h4">{{ $t('feature-header') }}</span>
+    </v-card-title>
+
     <v-container max-width="1000" class="mx-auto rounded-lg">
       <v-row no-gutters>
         <v-col
@@ -68,6 +75,7 @@
       :class="['text-center text-h5 font-weight-bold', $vuetify.display.smAndDown ? 'pa-5' : 'pt-10 pb-15']"
       style="border: 2px solid #B1873F; border-radius: 15px;"
     >
+      <v-icon>mdi-flower</v-icon>
       {{ $t('service-header') }}
     </v-card-title>
     <v-container
@@ -111,7 +119,10 @@
     max-width="1200"
     class="mx-auto mt-5 rounded-lg"
   >
-    <h2 class="text-center text-secondary">{{ $t('testimonial-header') }}</h2>
+    <h2 class="text-center text-secondary">
+      <v-icon>mdi-clover</v-icon>
+      {{ $t('testimonial-header') }}
+    </h2>
     <h4 class="text-center">{{ $t('testimonial-subtitle') }}</h4>
     <v-container max-width="1200" class="mx-auto rounded-lg px-0 mt-4">
       <v-row no-gutters>
@@ -180,6 +191,9 @@ const banners = [
   },
   {
     src: 'banner-7.png',
+  },
+  {
+    src: 'banner-8.png',
   },
 ];
 </script>
