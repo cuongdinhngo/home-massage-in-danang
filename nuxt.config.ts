@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: false,
-  modules: ['@nuxt/content', 'vuetify-nuxt-module'],
+  modules: ['@nuxt/content', 'vuetify-nuxt-module', '@nuxtjs/i18n'],
   vuetify: {
     vuetifyOptions: 'vuetify.config.ts'
   },
@@ -22,5 +22,15 @@ export default defineNuxtConfig({
         { name: 'format-detection', content: 'telephone=no' }
       ]
     }
+  },
+  i18n: {
+    defaultLocale: 'vi',
+    locales: [
+      { code: 'vi', name: 'Tiếng Việt', file: 'vi.json', icon: 'vn.png' },
+      { code: 'en', name: 'English', file: 'en.json', icon: 'us.png' },
+      { code: 'kr', name: '한국어', file: 'kr.json', icon: 'kr.png' },
+      { code: 'cn', name: '汉语', file: 'cn.json', icon: 'cn.png' }
+    ],
+    langDir: 'locales/',
   }
 })
