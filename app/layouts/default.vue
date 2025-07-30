@@ -51,7 +51,7 @@
               >
                 <template #prepend>
                   <v-avatar size="20">
-                    <v-img :src="getImagePath(selectedLanguage.icon)" />
+                    <v-img :src="getImagePath(selectedLanguage.icon)" cover/>
                   </v-avatar>
                 </template>
                 <v-list-item-title class="text-subtitle-2">
@@ -107,7 +107,8 @@
       <v-list-item
         v-for="(item, index) in menu"
         :key="index"
-        link
+        link slim
+        :prepend-icon="item.icon"
         :variant="currentSection === item.section ? 'tonal' : 'text'"
         :class="[{ 'text-primary': currentSection === item.section }]"
         @click="scrollToSection(item.section)"
@@ -126,13 +127,13 @@
         :absolute="true"
         :color="open ? '' : 'primary'"
         location="right bottom"
-        size="large"
+        size="small"
         icon
-        class="mr-2"
+        class="mr-4"
       >
-        <v-icon size="40">{{ open ? 'mdi-close' : 'mdi-bell-ring-outline' }}</v-icon>
+        <v-icon size="30">{{ open ? 'mdi-close' : 'mdi-bell-ring-outline' }}</v-icon>
         <v-speed-dial v-model="open" location="top center" activator="parent">
-          <v-btn icon variant="text" size="50" color="blue" class="contact-btn" @click="callPhone">
+          <v-btn key="phone" icon variant="text" size="50" color="blue" class="contact-btn" @click="callPhone">
             <v-img
               :src="getImagePath('phone.svg')"
               width="40" height="40" cover rounded="circle" class="contact-img"
@@ -260,9 +261,9 @@ const selectedLanguage = reactive({
 });
 
 const menu = ref([
-  { title: translator('nav-features'), section: 'features' },
-  { title: translator('nav-services'), section: 'services' },
-  { title: translator('nav-testimonials'), section: 'testimonials' },
+  { code: 'nav-features', title: translator('nav-features'), section: 'features', icon: 'mdi-spa' },
+  { code: 'nav-services', title: translator('nav-services'), section: 'services', icon: 'mdi-flower' },
+  { code: 'nav-testimonials', title: translator('nav-testimonials'), section: 'testimonials', icon: 'mdi-clover' },
 ]);
 
 const contacts = [
@@ -291,17 +292,16 @@ const contacts = [
 watch(
   () => locale.value,
   (newLocale) => {
-    menu.value = [
-      { title: translator('nav-features'), section: 'features' },
-      { title: translator('nav-services'), section: 'services' },
-      { title: translator('nav-testimonials'), section: 'testimonials' },
-    ];
+    menu.value = menu.value.map(item => ({
+      ...item,
+      title: translator(item.code) || item.title,
+    }));
     const lang = locales.value.find(lang => lang.code === newLocale);
     if (lang) {
-      selectedLanguage.name = lang.name;
-      selectedLanguage.code = lang.code;
-      selectedLanguage.icon = lang.icon;
-      selectedLanguage.file = lang.file;
+      selectedLanguage.name = (lang.name ?? '');
+      selectedLanguage.code = (lang.code ?? '');
+      selectedLanguage.icon = (lang.icon as string ?? '');
+      selectedLanguage.file = (typeof lang.file === 'string' ? lang.file : '');
     }
   },
   { immediate: true }
