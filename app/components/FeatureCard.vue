@@ -1,19 +1,16 @@
 <template>
-  <v-card class="bg-main pa-2 ma-2 elevation-0 rounded-lg" min-height="310">
+  <v-card class="bg-main pa-2 ma-2 elevation-0 rounded-lg feature-card" min-height="310">
     <v-row no-gutters>
       <v-col
         v-if="$vuetify.display.xs"
         cols="12" sm="12"
         :class="$vuetify.display.xs ? 'text-center' : 'text-end'"
       >
-        <v-avatar
-          tile
-          size="260"
-        >
+        <v-avatar tile size="260" class="feature-image" rounded="lg">
           <v-img
             :src="getImagePath(feature.image)"
-            cover
-            rounded="lg"
+            cover rounded="lg"
+            class="feature-image"
           />
         </v-avatar>
       </v-col>
@@ -58,13 +55,13 @@
         :class="$vuetify.display.mdAndDown ? 'text-center' : 'text-end'"
       >
         <v-avatar
-          tile
+          tile rounded="lg" class="feature-image"
           :size="$vuetify.display.mdAndUp ? 160 : 200"
         >
           <v-img
             :src="getImagePath(feature.image)"
-            cover
-            rounded="lg"
+            cover rounded="lg"
+            class="feature-image"
           />
         </v-avatar>
       </v-col>
@@ -79,3 +76,19 @@ defineProps({
   }
 });
 </script>
+<style scoped>
+.feature-card {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.feature-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.feature-image {
+  transition: transform 0.3s;
+}
+.feature-card:hover .feature-image {
+  transform: scale(1.06);
+}
+</style>
