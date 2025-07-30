@@ -1,9 +1,9 @@
 <template>
-  <v-card class="bg-main pa-2 ma-2 elevation-0 rounded-lg" min-height="300">
-    <v-row>
+  <v-card class="bg-main pa-2 ma-2 elevation-0 rounded-lg" min-height="310">
+    <v-row no-gutters>
       <v-col
         v-if="$vuetify.display.xs"
-        cols="12" sm="12" md="4" lg="4"
+        cols="12" sm="12"
         :class="$vuetify.display.xs ? 'text-center' : 'text-end'"
       >
         <v-avatar
@@ -18,21 +18,27 @@
         </v-avatar>
       </v-col>
       <v-col
-        cols="12" sm="12" md="7" lg="7"
+        cols="12" sm="12" md="12" lg="12"
+        class="text-center"
       >
         <v-card-title
-          :class="['py-0', $vuetify.display.xs ? 'text-h6 text-center' : 'text-h5']"
+          :class="[$vuetify.display.xs ? 'text-h6' : 'text-h5']"
         >
           {{ feature.title }}
         </v-card-title>
-
         <v-card-title
-          :class="['text-wrap mb-2 text-justify', $vuetify.display.xs ? 'text-subtitle-2' : 'text-subtitle-1']"
-          style="line-height: normal; min-height: 70px;"
+          :class="['text-wrap text-justify', $vuetify.display.xs ? 'text-subtitle-2' : 'text-subtitle-1']"
+          style="line-height: normal; min-height: 50px;"
         >
           {{ feature.description }}
         </v-card-title>
-        <v-card-text>
+      </v-col>
+    </v-row>
+    <v-row no-gutters class="d-flex align-center mt-2">
+      <v-col
+        cols="12" sm="12" md="7" lg="7"
+      >
+        <v-card-text class="pt-0">
           <p :class="['font-weight-bold', $vuetify.display.xs ? 'text-subtitle-2' : 'text-subtitle-1']">
             {{ $t('feature-benefits') }}:
           </p>
