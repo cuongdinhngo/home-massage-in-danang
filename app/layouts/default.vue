@@ -7,10 +7,13 @@
           cols="12"
           class="d-flex align-center justify-space-between"
         >
+          <!-- Hamburger menu for small screens -->
           <v-app-bar-nav-icon
             v-if="$vuetify.display.smAndDown"
             @click="drawer.visible = !drawer.visible"
           />
+
+          <!-- Logo -->
           <v-responsive>
             <v-img
               :src="getImagePath('home-massage.avif')"
@@ -19,6 +22,8 @@
               :width="mdAndDown ? 200 : 300"
             />
           </v-responsive>
+
+          <!-- Navigation buttons -->
           <div
             v-if="$vuetify.display.mdAndUp"
             class="actions"
@@ -27,12 +32,13 @@
               v-for="(item, index) in menu"
               :key="index"
               active-color="primary"
-              class="text-subtitle-1 font-weight-bold"
+              :class="['text-subtitle-1 font-weight-bold', { 'text-primary': currentSection === item.section }]"
               @click="scrollToSection(item.section)"
             >
               {{item.title}}
             </v-btn>
           </div>
+
           <!-- Language Selector -->
           <v-menu>
             <template v-slot:activator="{ props }">
@@ -102,6 +108,8 @@
         v-for="(item, index) in menu"
         :key="index"
         link
+        :variant="currentSection === item.section ? 'tonal' : 'text'"
+        :class="[{ 'text-primary': currentSection === item.section }]"
         @click="scrollToSection(item.section)"
       >
         <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -113,6 +121,37 @@
   <v-main>
     <v-container fluid class="pa-0">
       <slot />
+      <v-fab
+        key="absolute"
+        :absolute="true"
+        :color="open ? '' : 'primary'"
+        location="right bottom"
+        size="large"
+        icon
+        class="mr-2"
+      >
+        <v-icon size="40">{{ open ? 'mdi-close' : 'mdi-bell-ring-outline' }}</v-icon>
+        <v-speed-dial v-model="open" location="top center" activator="parent">
+          <v-btn icon variant="text" size="50" color="blue" class="contact-btn" @click="callPhone">
+            <v-img
+              :src="getImagePath('phone.svg')"
+              width="40" height="40" cover rounded="circle" class="contact-img"
+            />
+          </v-btn>
+
+          <v-btn
+            v-for="contact in contacts"
+            :key="contact.title"
+            :href="contact.link" target="_blank" class="contact-btn"
+            icon variant="text" size="50" color="blue"
+          >
+            <v-img
+              :src="getImagePath(contact.icon)"
+              width="40" height="40" cover rounded="circle" class="contact-img"
+            />
+          </v-btn>
+        </v-speed-dial>
+      </v-fab>
     </v-container>
   </v-main>
 
@@ -143,15 +182,17 @@
         <v-col
           cols="12" sm="6" md="4"
         >
-          <v-card class="bg-transparent elevation-0">
+          <v-card class="bg-transparent elevation-0 booking-card">
             <v-card-title>
               <span class="text-subtitle-1 font-weight-bold">
                 <v-icon>mdi-phone</v-icon>
                 {{ $t('nav-booking') }}:
               </span>
             </v-card-title>
-            <v-card-text>
-              <p class="text-h6 text-primary font-weight-bold cursor-pointer">+84935922854</p>
+            <v-card-text class="">
+              <p class="text-h6 text-primary font-weight-bold cursor-pointer booking-phone" @click="callPhone">
+                +84935922854
+              </p>
             </v-card-text>
           </v-card>
         </v-col>
@@ -175,6 +216,7 @@
                 :key="contact.title"
                 :href="contact.link"
                 target="_blank"
+                class="contact-btn"
               >
                 <v-img
                   :src="getImagePath(contact.icon)"
@@ -182,6 +224,7 @@
                   height="40"
                   cover
                   rounded="circle"
+                  class="contact-img"
                 />
               </v-btn>
             </v-card-text>
@@ -201,6 +244,13 @@ const drawer = reactive({
 
 const { mdAndDown } = useDisplay();
 const { locales, setLocale, t:translator, locale } = useI18n();
+const currentSection = ref('');
+const open = shallowRef(true)
+
+function reopen () {
+  open.value = false
+  setTimeout(() => open.value = true, 400)
+}
 
 const selectedLanguage = reactive({
   code: 'vi',
@@ -270,6 +320,8 @@ function scrollToSection(section: string) {
     const yOffset = -80;
     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: 'smooth' });
+    currentSection.value = section;
+    drawer.visible = false;
   }
 }
 
@@ -280,4 +332,30 @@ function chooseLanguage(language: Language) {
   setLocale(language.code as 'vi' | 'en' | 'kr' | 'cn');
   console.log('Language changed to => ', selectedLanguage);
 }
+
+function callPhone() {
+  window.location.href = 'tel:+84935922854';
+}
 </script>
+
+<style scoped>
+.contact-btn {
+  transition: transform 0.3s;
+}
+.contact-btn:hover .contact-img {
+  transform: scale(1.18);
+}
+.contact-img {
+  transition: transform 0.3s;
+}
+.booking-card {
+  transition: box-shadow 0.3s;
+}
+.booking-card:hover .booking-phone {
+  transform: scale(1.15);
+}
+.booking-phone {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+</style>
