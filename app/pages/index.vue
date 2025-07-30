@@ -137,8 +137,6 @@
 const { mdAndDown, sm } = useDisplay();
 const { locale } = useI18n();
 
-console.log('Current locale:', locale.value);
-
 const { data, status, error } = await useAsyncData(
   `data-${locale.value}`,
   async() => await import(`../content/${locale.value}/data.json`),
@@ -163,10 +161,6 @@ const { data, status, error } = await useAsyncData(
     },
   }
 );
-
-console.log('Error', error.value);
-console.log('Status:', status.value);
-console.log('Data fetched:', data.value);
 
 const banners = [
   {

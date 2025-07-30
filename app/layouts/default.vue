@@ -330,7 +330,6 @@ function chooseLanguage(language: Language) {
   selectedLanguage.code = language.code;
   selectedLanguage.icon = language.icon;
   setLocale(language.code as 'vi' | 'en' | 'kr' | 'cn');
-  console.log('Language changed to => ', selectedLanguage);
 }
 
 function callPhone() {
