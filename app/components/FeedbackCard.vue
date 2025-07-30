@@ -3,7 +3,7 @@
     <v-list-item
       :prepend-avatar="feedback.avatar"
       :title="feedback.name"
-      :subtitle="feedback.location"
+      :subtitle="feedback.from"
       class="pt-2"
     ></v-list-item>
     <v-card-title class="d-flex align-center justify-center">

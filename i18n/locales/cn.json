@@ -1,0 +1,25 @@
+{
+  "nav-features": "特色",
+  "nav-services": "服务",
+  "nav-testimonials": "客户反馈",
+  "nav-contact": "联系我们",
+  "nav-about": "关于我们",
+  "nav-home": "首页",
+  "nav-booking": "预约",
+  "nav-language": "语言",
+  "hero-title": "岘港上门按摩服务",
+  "hero-subtitle": "我们在岘港提供专业的上门按摩服务",
+  "hero-slogan": "专注提供岘港上门按摩服务。",
+  "feature-header": "服务特色",
+  "feature-benefits": "服务优势",
+  "service-header": "我们的服务",
+  "testimonial-header": "客户反馈",
+  "testimonial-subtitle": "我们的客户如何评价我们的服务",
+  "$vuetify": {
+    "rating": {
+      "ariaLabel": {
+        "item": "Rating {value} of {max}"
+      }
+    }
+  }
+}

@@ -49,7 +49,7 @@
                   </v-avatar>
                 </template>
                 <v-list-item-title class="text-subtitle-2">
-                  {{ selectedLanguage.title }}
+                  {{ selectedLanguage.name }}
                 </v-list-item-title>
               </v-list-item>
               <v-btn
@@ -68,7 +68,7 @@
               nav density="comfortable"
             >
               <v-list-item
-                v-for="(language, index) in languages"
+                v-for="(language, index) in locales"
                 :key="index"
                 :value="language.code"
                 link
@@ -81,7 +81,7 @@
                   </v-avatar>
                 </template>
                 <template #title>
-                  <span class="text-subtitle-2">{{ language.title }}</span>
+                  <span class="text-subtitle-2">{{ language.name }}</span>
                 </template>
               </v-list-item>
             </v-list>
@@ -119,7 +119,6 @@
   <!-- Footer -->
   <v-footer
     class="bg-white text-center"
-    padless
   >
     <v-container max-width="1200" class="mx-auto">
       <v-row no-gutters>
@@ -136,7 +135,7 @@
               ></v-img>
             </v-responsive>
             <v-card-text>
-              <p class="text-body-2">Chuyên cung cấp massage tại nhà Đà Nẵng.</p>
+              <p class="text-body-2">{{ $t('hero-slogan') }}</p>
             </v-card-text>
           </v-card>
         </v-col>
@@ -148,7 +147,7 @@
             <v-card-title>
               <span class="text-subtitle-1 font-weight-bold">
                 <v-icon>mdi-phone</v-icon>
-                Mobilephone:
+                {{ $t('nav-booking') }}:
               </span>
             </v-card-title>
             <v-card-text>
@@ -163,7 +162,7 @@
           <v-card class="bg-transparent elevation-0">
             <v-card-title>
               <span class="text-subtitle-1 font-weight-bold">
-                Contact us:
+                {{ $t('nav-contact') }}:
               </span>
             </v-card-title>
             <v-card-text>
@@ -201,12 +200,20 @@ const drawer = reactive({
 });
 
 const { mdAndDown } = useDisplay();
+const { locales, setLocale, t:translator, locale } = useI18n();
 
 const selectedLanguage = reactive({
-  title: 'Tiếng Việt (VI)',
   code: 'vi',
-  icon: 'vn.png',
+  name: 'Tiếng Việt',
+  file: 'vi.json',
+  icon: 'vn.png'
 });
+
+const menu = ref([
+  { title: translator('nav-features'), section: 'features' },
+  { title: translator('nav-services'), section: 'services' },
+  { title: translator('nav-testimonials'), section: 'testimonials' },
+]);
 
 const contacts = [
   {
@@ -231,34 +238,31 @@ const contacts = [
   },
 ];
 
-const menu = [
-  { title: 'Features', section: 'features' },
-  { title: 'Services', section: 'services' },
-  { title: 'Testimonial', section: 'testimonials' },
-];
+watch(
+  () => locale.value,
+  (newLocale) => {
+    menu.value = [
+      { title: translator('nav-features'), section: 'features' },
+      { title: translator('nav-services'), section: 'services' },
+      { title: translator('nav-testimonials'), section: 'testimonials' },
+    ];
+    const lang = locales.value.find(lang => lang.code === newLocale);
+    if (lang) {
+      selectedLanguage.name = lang.name;
+      selectedLanguage.code = lang.code;
+      selectedLanguage.icon = lang.icon;
+      selectedLanguage.file = lang.file;
+    }
+  },
+  { immediate: true }
+);
 
-const languages = [
-  {
-    title: 'Tiếng Việt (VI)',
-    code: 'vi',
-    icon: 'vn.png',
-  },
-  {
-    title: 'English (EN)',
-    code: 'en',
-    icon: 'us.png',
-  },
-  {
-    title: '한국어 (KR)',
-    code: 'kr',
-    icon: 'kr.png',
-  },
-  {
-    title: '汉语 (CN)',
-    code: 'cn',
-    icon: 'cn.png',
-  },
-];
+type Language = {
+  code: string;
+  name: string;
+  file: string;
+  icon: string;
+};
 
 function scrollToSection(section: string) {
   const el = document.getElementById(section);
@@ -269,10 +273,11 @@ function scrollToSection(section: string) {
   }
 }
 
-function chooseLanguage(language: { title: string; code: string; icon: string }) {
-  selectedLanguage.title = language.title;
+function chooseLanguage(language: Language) {
+  selectedLanguage.name = language.name;
   selectedLanguage.code = language.code;
   selectedLanguage.icon = language.icon;
+  setLocale(language.code as 'vi' | 'en' | 'kr' | 'cn');
   console.log('Language changed to => ', selectedLanguage);
 }
 </script>

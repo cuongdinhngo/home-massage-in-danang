@@ -1,0 +1,25 @@
+{
+  "nav-features": "Đặc điểm",
+  "nav-services": "Dịch vụ",
+  "nav-testimonials": "Lời chứng thực",
+  "nav-contact": "Liên hệ",
+  "nav-about": "Về chúng tôi",
+  "nav-home": "Trang chủ",
+  "nav-booking": "Đặt lịch",
+  "nav-language": "Ngôn ngữ",
+  "hero-title": "Dịch vụ massage tại nhà Đà Nẵng",
+  "hero-subtitle": "Chúng tôi cung cấp dịch vụ massage tại nhà chuyên nghiệp tại Đà Nẵng",
+  "hero-slogan": "Chuyên cung cấp massage tại nhà Đà Nẵng.",
+  "feature-header": "Đặc điểm nổi bật",
+  "feature-benefits": "Lợi ích",
+  "service-header": "Dịch vụ của chúng tôi",
+  "testimonial-header": "Lời chứng thực",
+  "testimonial-subtitle": "Khách hàng của chúng tôi nói gì về dịch vụ của chúng tôi",
+  "$vuetify": {
+    "rating": {
+      "ariaLabel": {
+        "item": "Rating {value} of {max}"
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
   <v-list-item
     class="pa-3 bg-white rounded-lg elevation-0 border-thin ma-2"
     :subtitle="service.subtitle"
+    min-height="80"
   >
     <template #prepend>
       <v-icon color="pink" size="36">{{ service.icon }}</v-icon>

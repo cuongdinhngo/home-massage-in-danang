@@ -1,0 +1,25 @@
+{
+  "nav-features": "특징",
+  "nav-services": "서비스",
+  "nav-testimonials": "고객 후기",
+  "nav-contact": "문의하기",
+  "nav-about": "회사 소개",
+  "nav-home": "홈",
+  "nav-booking": "예약하기",
+  "nav-language": "언어",
+  "hero-title": "다낭 홈 마사지 서비스",
+  "hero-subtitle": "저희는 다낭에서 전문적인 홈 마사지 서비스를 제공합니다",
+  "hero-slogan": "다낭 홈 마사지 전문 서비스",
+  "feature-header": "주요 특징",
+  "feature-benefits": "혜택",
+  "service-header": "저희 서비스",
+  "testimonial-header": "고객 후기",
+  "testimonial-subtitle": "저희 서비스에 대한 고객님의 소중한 의견",
+  "$vuetify": {
+    "rating": {
+      "ariaLabel": {
+        "item": "Rating {value} of {max}"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "nav-features": "Features",
+  "nav-services": "Services",
+  "nav-testimonials": "Testimonials",
+  "nav-contact": "Contact",
+  "nav-about": "About Us",
+  "nav-home": "Home",
+  "nav-booking": "Booking",
+  "nav-language": "Language",
+  "hero-title": "Home Massage Service in Da Nang",
+  "hero-subtitle": "We provide professional home massage services in Da Nang",
+  "hero-slogan": "Specializing in home massage services in Da Nang.",
+  "feature-header": "Key Features",
+  "feature-benefits": "Benefits",
+  "service-header": "Our Services",
+  "testimonial-header": "Testimonials",
+  "testimonial-subtitle": "What our customers say about our service",
+  "$vuetify": {
+    "rating": {
+      "ariaLabel": {
+        "item": "Rating {value} of {max}"
+      }
+    }
+  }
+}

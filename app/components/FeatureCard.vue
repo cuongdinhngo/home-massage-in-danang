@@ -34,7 +34,7 @@
         </v-card-title>
         <v-card-text>
           <p :class="['font-weight-bold', $vuetify.display.xs ? 'text-subtitle-2' : 'text-subtitle-1']">
-            Benefits:
+            {{ $t('feature-benefits') }}:
           </p>
           <ul :class="['ml-4', $vuetify.display.xs ? 'text-subtitle-2' : 'text-subtitle-1']">
             <li
