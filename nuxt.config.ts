@@ -32,5 +32,11 @@ export default defineNuxtConfig({
       { code: 'cn', name: '汉语', file: 'cn.json', icon: 'cn.png' }
     ],
     langDir: 'locales/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      fallbackLocale: 'vi',
+      alwaysRedirect: true
+    }
   }
 })
