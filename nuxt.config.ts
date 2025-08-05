@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     vuetifyOptions: 'vuetify.config.ts'
   },
   app: {
+    baseURL: process.env.NODE_ENV === 'production' ? '/home-massage-in-danang/' : '/',
     head: {
       link: [
         { rel: 'icon', type: 'image/png', href: 'logo.png' }
