@@ -192,7 +192,7 @@
             </v-card-title>
             <v-card-text class="">
               <p class="text-h6 text-primary font-weight-bold cursor-pointer booking-phone" @click="callPhone">
-                +84935922854
+                +840000000000
               </p>
             </v-card-text>
           </v-card>
@@ -270,22 +270,22 @@ const contacts = [
   {
     title: 'Zalo',
     icon: 'zalo.svg',
-    link: 'https://zalo.me/0935922854',
+    link: 'https://zalo.me',
   },
   {
     title: 'Facebook',
     icon: 'facebook.svg',
-    link: 'https://www.messenger.com/t/100009511365248',
+    link: 'https://www.messenger.com',
   },
   {
     title: 'Whatsapp',
     icon: 'whatsapp.svg',
-    link: 'https://wa.me/qr/XETIG4TOJI5QO1',
+    link: 'https://wa.me',
   },
   {
     title: 'KakaoTalk',
     icon: 'kakaoTalk.svg',
-    link: 'http://qr.kakao.com/talk/0diNs_cW8DuEbDIrdyHsbGQsh5Q-',
+    link: 'http://kakao.com',
   },
 ];
 
@@ -333,7 +333,7 @@ function chooseLanguage(language: Language) {
 }
 
 function callPhone() {
-  window.location.href = 'tel:+84935922854';
+  window.location.href = 'tel:+840000000000';
 }
 </script>
 
